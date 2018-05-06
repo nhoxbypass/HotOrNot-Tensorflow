@@ -1,8 +1,9 @@
-package iceteaviet.com.hotornot;
+package com.iceteaviet.hotornot;
 
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.os.Environment;
+
 import java.io.File;
 import java.io.FileOutputStream;
 

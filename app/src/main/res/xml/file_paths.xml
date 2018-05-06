@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <paths>
-    <external-files-path name="app_pictures" path="Pictures" />
+    <files-path
+        name="images"
+        path="images/" />
 </paths>

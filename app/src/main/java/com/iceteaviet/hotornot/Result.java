@@ -1,4 +1,4 @@
-package iceteaviet.com.hotornot;
+package com.iceteaviet.hotornot;
 
 /**
  * Created by Genius Doan on 3/4/2018.

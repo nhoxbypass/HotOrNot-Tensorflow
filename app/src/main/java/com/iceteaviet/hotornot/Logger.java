@@ -1,4 +1,4 @@
-package iceteaviet.com.hotornot;
+package com.iceteaviet.hotornot;
 
 import android.util.Log;
 
