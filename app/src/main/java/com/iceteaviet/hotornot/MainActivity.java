@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -17,6 +16,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.iceteaviet.hotornot.classifier.Classifier;
+import com.iceteaviet.hotornot.classifier.Result;
+import com.iceteaviet.hotornot.classifier.tensorflow.ImageClassifierFactory;
+import com.iceteaviet.hotornot.utils.Constants;
+import com.iceteaviet.hotornot.utils.ImageUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -33,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
     private Button captureButton;
     private ImageView imagePhoto;
     private TextView resultText;
-    private ConstraintLayout containerLayout;
 
     private Handler handler = new Handler();
 
@@ -48,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
         captureButton = findViewById(R.id.btn_take_picture);
         imagePhoto = findViewById(R.id.image_photo);
         resultText = findViewById(R.id.text_result);
-        containerLayout = findViewById(R.id.container);
 
 
         captureButton.setOnClickListener(new View.OnClickListener() {
@@ -119,8 +122,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showResult(Result result) {
+        captureButton.setVisibility(View.GONE);
         resultText.setText(result.getResult().toUpperCase());
-        containerLayout.setBackgroundColor(getColorFromResult(result.getResult()));
+        resultText.setBackgroundColor(getColorFromResult(result.getResult()));
+        resultText.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (resultText.getVisibility() == View.VISIBLE) {
+            captureButton.setVisibility(View.VISIBLE);
+            resultText.setVisibility(View.GONE);
+        } else {
+            super.onBackPressed();
+        }
     }
 
     @Override

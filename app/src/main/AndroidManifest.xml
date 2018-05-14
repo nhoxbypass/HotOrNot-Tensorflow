@@ -23,7 +23,7 @@
         </activity>
 
         <provider
-            android:name="android.support.v4.content.FileProvider"
+            android:name="com.iceteaviet.hotornot.uri.GenericFileProvider"
             android:authorities="com.iceteaviet.hotornot.fileprovider"
             android:grantUriPermissions="true"
             android:exported="false">
